@@ -33,7 +33,7 @@ def upgrade() -> None:
 
 def downgrade() -> None:
     # Alembic downgrade migration entrypoint.
-    
+
     # NOTE: Keep schema DDL changes seperate from data DML chanegs in different migration script.
     #
     # NOTE: Following is an example on how to use the SQLAlchemy model definition in Alembic.

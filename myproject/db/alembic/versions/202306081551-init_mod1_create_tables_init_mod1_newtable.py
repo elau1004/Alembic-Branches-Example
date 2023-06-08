@@ -9,6 +9,8 @@ Create Date: 2023-06-08 15:51:11.169378+00:00
 import logging
 import sqlalchemy as sa
 from alembic import op
+from myproject.db.alembic import exist_table
+from myproject.db.core.model import SystemUser
 from myproject.db.mod1.model import DBModule1Base
 
 
@@ -16,7 +18,7 @@ from myproject.db.mod1.model import DBModule1Base
 revision = 'init_mod1_newtable'
 down_revision = None
 branch_labels = ('INITMOD1',)
-depends_on = None
+depends_on = 'init_core_newtable'
 
 log = logging.getLogger("alembic.runtime.migration")
 
@@ -29,7 +31,10 @@ def upgrade() -> None:
     # NOTE: Following is an example on how to use the SQLAlchemy model definition in Alembic.
     engine = op.get_context().connection.engine
     DBModule1Base.metadata.create_all(engine)
-    
+
+    if exist_table(SystemUser.__tablename__):
+        log.info(f"Add foreign key ...")
+
 
 def downgrade() -> None:
     # Alembic downgrade migration entrypoint.
@@ -39,3 +44,6 @@ def downgrade() -> None:
     # NOTE: Following is an example on how to use the SQLAlchemy model definition in Alembic.
     engine = op.get_context().connection.engine
     DBModule1Base.metadata.drop_all(engine)
+
+    if exist_table(SystemUser.__tablename__):
+        log.info(f"Drop foreign key ...")
