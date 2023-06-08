@@ -11,7 +11,7 @@ import sqlalchemy as sa
 from alembic import op
 from myproject.db.alembic import exist_table
 from myproject.db.core.model import SystemUser
-from myproject.db.mod2.model import DBModule2Base
+from myproject.db.mod2.model import DBModule2Base, Module2_Table
 
 
 # revision identifiers, used by Alembic.
@@ -33,7 +33,14 @@ def upgrade() -> None:
     DBModule2Base.metadata.create_all(engine)
 
     if exist_table(SystemUser.__tablename__):
-        log.info(f"Add foreign key ...")
+    #     op.create_foreign_key(
+    #         constraint_name=f"{Module2_Table.__tablename__}_created_by_FK",
+    #         source_table=f"{Module2_Table.__tablename__}",
+    #         referent_table=f"{SystemUser.__tablename__}",
+    #         local_cols=[f"{Module2_Table.updated_by.name}"],
+    #         remote_cols=[f"{SystemUser.ID.name}"],
+    #     )
+        pass
 
 
 def downgrade() -> None:
@@ -44,6 +51,3 @@ def downgrade() -> None:
     # NOTE: Following is an example on how to use the SQLAlchemy model definition in Alembic.
     engine = op.get_context().connection.engine
     DBModule2Base.metadata.drop_all(engine)
-
-    if exist_table(SystemUser.__tablename__):
-        log.info(f"Add foreign key ...")

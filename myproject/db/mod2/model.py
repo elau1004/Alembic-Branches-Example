@@ -31,6 +31,7 @@ class Module2_Table(DBModule2Base):
 
     ID: Mapped[SmallInteger] = mapped_column(SmallInteger, primary_key=True, nullable=False, comment="The unique ID to identify a row in this table.")
     updated_on: Mapped[DateTime] = mapped_column(DateTime, nullable=False, server_default=func.now(), comment="The date/time this row was last updated on.")
+    updated_by: Mapped[SmallInteger] = mapped_column(SmallInteger, nullable=True, comment="The foreign key to the system user table.")
 
 
 # SEE:  https://dbdiagram.io/home/
