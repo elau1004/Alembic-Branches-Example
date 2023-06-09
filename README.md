@@ -8,7 +8,7 @@ An Alembic example on how to setup multiple DB modules using branches and depend
 
 
 ## My use case:
-Instead of a pile of database object (tables), I want a way  to organize them into modules that gives me the flexibility to install them either in a single database of in their own seperate database with an eye looking towards micro services.  In this example, I am using a single repository to implement the modularization of my database objects.  You could modularized your database object in different repositories but that is not what this example is about.
+Instead of a pile of database object (tables), I want a way to organize them into modules that gives me the flexibility to install them either in a single database or in their own seperate database with an eye looking towards micro services.  In this example, I am using a single repository to implement the modularization of my database objects.  You could modularized your database object in different repositories but that is not what this example is about.
 
 In this example I have a core common module and 3 other modules.  It is assumed that the core module is needed by the other modules.
 
