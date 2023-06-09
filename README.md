@@ -21,6 +21,14 @@ This is my specific uses case and may not fit your use situation.  However, if y
 * The `script.py.mako` have been enhance with extra imports to better integrate SQLAlchemy model and example.
 
 
+## Setup:
+1. Clone this repo using: `git  clone https://github.com/elau1004/Alembic-Branches-Example.git`
+2. Install `pipenv` using: `pip install pipenv`
+3. Setup  your virtual environment and install the packages using: `pipenv update`
+4. Start your virtual environment using `pipenv shell`
+5. Continue to the "Deployment example" section.
+
+
 ## Create the migration scripts using alembic:
 The sample scripts that are checked in was generated and edited from the following execution of "`alembic revision`" command maximizing its CLI options.
 
@@ -91,7 +99,7 @@ alembic revision -m "MOD3 Rev3"  --rev-id mod3_rev3  --head=MOD3@head
 1. Edit the latest revision script and set the `down_revision` value to point back to where we originally started from.  In my example it should be the "`init_XXXX_version0`" where `xxx` is the module mnemonic.
 
 
-## Deployment:
+## Deployment example:
 ```
 alembic heads | sort                # Display all the head branches from all the migration scripts.
 alembic history                     # Display all the revision histories reflected from all the migration scripts.
@@ -127,10 +135,11 @@ Update the latest branch scripts and change the value of "`down_revision`" to "`
 
 
 ## Miscellanous:
-* Once you have initialize the modules, your databse objects are the latest according to the declarative model in `model.py`.  However, the version tacked in the `alembic_version` table is **not** the latest.  Therefore, you need to continue to fast forward all the revisions to arrive at each of the modules latest head revision.
+* Once you have initialize the modules, your database objects are the latest according to the declarative model in `model.py`.  However, the version tacked in the `alembic_version` table is **not** the latest.  Therefore, you need to continue to fast forward all the revisions to arrive at each of the modules latest head revision.
 * A sqlite3 database file shall be created in your repository root directory.  To start over, just delete this file.
 * Try to avoid using "`alembic upgrade heads`".  You should be specific in apply your changes or you could create a big mess by applying the wrong branch into your environment.
 * The script template does output commented out code that you could edit to enable the checking of CLI parameter passed via "`-x REVISE=`" in the `alembic upgrade` command.
+* You do **not** need to install any package to get `sqlite3`.
 * Do review the sample revision scripts.
 
 
