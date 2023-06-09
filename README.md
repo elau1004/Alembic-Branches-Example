@@ -24,7 +24,7 @@ This is my specific uses case and may not fit your use situation.  However, if y
 ## Setup:
 1. Clone this repo using: `git  clone https://github.com/elau1004/Alembic-Branches-Example.git`
 2. Install `pipenv` using: `pip install pipenv`
-3. Setup  your virtual environment and install the packages using: `pipenv update`
+3. Setup  your virtual environment and install the packages using: `pipenv install --dev`
 4. Start your virtual environment using `pipenv shell`
 5. Continue to the "Deployment example" section.
 

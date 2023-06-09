@@ -5,7 +5,9 @@ name = "pypi"
 
 [packages]
 fs = ">=2.4"
-python-dotenv = "*"
+PyYAML = ">=6.0"
+python-dotenv = ">=1.0"
+python-dateutil = ">=2.8"
 psycopg2 = ">=2.9"
 sqlalchemy = ">=2.0"
 pydantic = ">=1.10"
@@ -15,8 +17,14 @@ hypercorn = ">=0.14"
 graphene = ">=3.2"
 graphene-pydantic = ">=0.4"
 graphene-sqlalchemy = ">=2.1"
-psycopg = {extras = ["binary"], version = "*"}
-python-dateutil = ">=2.8"
+
+[packages.psycopg]
+extras = ["binary"]
+"version >" = "3.1"
+
+[packages.httpx]
+extras = ["http2"]
+"version >" = "0.24"
 
 [dev-packages]
 pre-commit = "*"
