@@ -7,12 +7,12 @@ An Alembic example on how to setup multiple DB modules using branches and depend
 * Support environment variable **`SQLALCHEMY_URL`** to overwrite default **`sqlalchemy.url`** in the `alembic.ini` file.
 
 
-## My Use Case:
-Instead of a pile of database object (tables), I want a way  to organize them into modules that gives me the flexibility to install them either in a single database of in their own seperate database with an eye looking towards micro services.  In this example, I am using a single repository to implement the modularizatioin of my database objects.  You could modularized your database object in different repositories but that is not what this example is about.
+## My use case:
+Instead of a pile of database object (tables), I want a way  to organize them into modules that gives me the flexibility to install them either in a single database of in their own seperate database with an eye looking towards micro services.  In this example, I am using a single repository to implement the modularization of my database objects.  You could modularized your database object in different repositories but that is not what this example is about.
 
 In this example I have a core common module and 3 other modules.  It is assumed that the core module is needed by the other modules.
 
-This is my specific uses case and may not not fit your use case.  However, if you can gleem ideas off my example ... more power to you.
+This is my specific uses case and may not fit your use situation.  However, if you can gleam ideas off my example ... more power to you.
 
 
 ## Enhancements made:
@@ -22,7 +22,7 @@ This is my specific uses case and may not not fit your use case.  However, if yo
 
 
 ## Create the migration scripts using alembic:
-The sample scripts that are checked in was generated and edited from teh following execution of "`alembic revision`" command maximizing its CLI options.
+The sample scripts that are checked in was generated and edited from the following execution of "`alembic revision`" command maximizing its CLI options.
 
 1. Setup initialization of a common core branch.  This is meant to be a long living branch.
 ```
@@ -86,9 +86,9 @@ alembic revision -m "MOD3 Rev3"  --rev-id mod3_rev3  --head=MOD3@head
 1. Install the individual modules.
 1. Optionally, create a shortcut to install all modules into the current database.  Usually, this is in a single development database.
 1. Optionally, create a shortcut to populate the development databse with test data.
-1. Apply all the changes to bring the version of the databsse up to date.
-1. Delete the aplied scripts but keep the latest revision script.
-1. Edit the latest revision script and set the `down_revision` value to point back to where we original started from.  In my example it should be the "`init_XXXX_version0`" where `xxx` is the module mnemonic.
+1. Apply all the changes to bring the version of the database up to date.
+1. Delete the applied scripts but keep the latest revision script.
+1. Edit the latest revision script and set the `down_revision` value to point back to where we originally started from.  In my example it should be the "`init_XXXX_version0`" where `xxx` is the module mnemonic.
 
 
 ## Deployment:
