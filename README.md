@@ -15,7 +15,15 @@ In this example I have a core common module and 3 other modules.  It is assumed 
 This is my specific uses case and may not not fit your use case.  However, if you can gleem ideas off my example ... more power to you.
 
 
+## Enhancements made:
+* The `alembic.ini` have been tweaked.
+* The `env.py` have been enhance to read the environment variable `SQLALCHEMY_URL` to over write the default set in `alembic.ini`.
+* The `script.py.mako` have been enhance with extra imports to better integrate SQLAlchemy model and example.
+
+
 ## Create the migration scripts using alembic:
+The sample scripts that are checked in was generated and edited from teh following execution of "`alembic revision`" command maximizing its CLI options.
+
 1. Setup initialization of a common core branch.  This is meant to be a long living branch.
 ```
 alembic revision -m "Init core create tables"      --rev-id init_core_newtable --head=base --branch-label INITCORE
@@ -45,7 +53,7 @@ alembic revision -m "Init mod3 create replacables" --rev-id init_mod3_funcproc -
 alembic revision -m "Init mod3 seed system data"   --rev-id init_mod3_popdata  --head=INITMOD3@head
 alembic revision -m "Revn mod3 revision 0"         --rev-id init_mod3_version0 --head=base --depends-on=init_mod3_popdata  --branch-label MOD3
 ```
-5. Setup a shortcut dependency to all modules.
+5. Setup a shortcut dependency to upgrade all modules.
 ```
 alembic revision -m "Init modules" --rev-id init_all_modules --head=base --branch-label INITALL --depends-on=init_mod1_popdata --depends-on=init_mod2_popdata --depends-on=init_mod3_popdata
 ```
@@ -111,11 +119,11 @@ alembic upgrade    INITALL@head     # Apply all revisions to the all the  module
 alembic downgrade  base             # Downgrade all the above initialized modules.
 alembic upgrade    INITDEV@head     # Create a new development databasse with all the modules with test data.
 
-alembic upgrade    heads            # Bacareful! It will upgrade all branches to their heads.  Strictly for illustration.
+alembic upgrade    heads            # Becareful! It will upgrade all branches to their heads.  Strictly for illustration.
 alembic current                     # Display the current versions applied to the database.
 ```
 Once the upgrade is done, delete all the patching migration scripts except the latest script.
-Update the latest branch scripts and change the value of "down_revision" to "init_XXXX_version0".
+Update the latest branch scripts and change the value of "`down_revision`" to "`init_XXXX_version0`".
 
 
 ## Miscellanous:
