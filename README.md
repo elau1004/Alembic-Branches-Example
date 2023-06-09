@@ -1,4 +1,4 @@
-# Alembic-Branches-Example
+# Alembic Branches Example
 An Alembic example on how to setup multiple DB modules using branches and dependencies with checked in sample files.
 
 ## Goals:
