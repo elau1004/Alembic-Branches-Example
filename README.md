@@ -44,14 +44,14 @@ alembic revision -m "Init core revision 0"         --rev-id init_core_version0 -
 alembic revision -m "Init mod1 create tables"      --rev-id init_mod1_newtable --head=base --depends-on=init_core_newtable --branch-label INITMOD1
 alembic revision -m "Init mod1 create replacables" --rev-id init_mod1_funcproc --head=INITMOD1@head
 alembic revision -m "Init mod1 seed system data"   --rev-id init_mod1_popdata  --head=INITMOD1@head
-alembic revision -m "Revn mod1 revision 0"         --rev-id init_mod1_version0 --head=base --depends-on=init_mod1_popdata  --branch-label MOD1
+alembic revision -m "Init mod1 revision 0"         --rev-id init_mod1_version0 --head=base --depends-on=init_mod1_popdata  --branch-label MOD1
 ```
 3. Setup  initialization of a module 2 branch.  This is meant to be a long living branch.
 ```
 alembic revision -m "Init mod2 create tables"      --rev-id init_mod2_newtable --head=base --depends-on=init_core_newtable --branch-label INITMOD2
 alembic revision -m "Init mod2 create replacables" --rev-id init_mod2_funcproc --head=INITMOD2@head
 alembic revision -m "Init mod2 seed system data"   --rev-id init_mod2_popdata  --head=INITMOD2@head
-alembic revision -m "Revn mod2 revision 0"         --rev-id init_mod2_version0 --head=base --depends-on=init_mod2_popdata  --branch-label MOD2
+alembic revision -m "Init mod2 revision 0"         --rev-id init_mod2_version0 --head=base --depends-on=init_mod2_popdata  --branch-label MOD2
 ```
 4. Setup  initialization of a module 3 branch.  This is meant to be a long living branch.
 
@@ -59,7 +59,7 @@ alembic revision -m "Revn mod2 revision 0"         --rev-id init_mod2_version0 -
 alembic revision -m "Init mod3 create tables"      --rev-id init_mod3_newtable --head=base --depends-on=init_core_newtable --branch-label INITMOD3
 alembic revision -m "Init mod3 create replacables" --rev-id init_mod3_funcproc --head=INITMOD3@head
 alembic revision -m "Init mod3 seed system data"   --rev-id init_mod3_popdata  --head=INITMOD3@head
-alembic revision -m "Revn mod3 revision 0"         --rev-id init_mod3_version0 --head=base --depends-on=init_mod3_popdata  --branch-label MOD3
+alembic revision -m "Init mod3 revision 0"         --rev-id init_mod3_version0 --head=base --depends-on=init_mod3_popdata  --branch-label MOD3
 ```
 5. Setup a shortcut dependency to upgrade all modules.
 ```
