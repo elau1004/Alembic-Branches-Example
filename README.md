@@ -93,7 +93,7 @@ alembic revision -m "MOD3 Rev3"  --rev-id mod3_rev3  --head=MOD3@head
 1. Install the core module. 
 1. Install the individual modules.
 1. Optionally, create a shortcut to install all modules into the current database.  Usually, this is in a single development database.
-1. Optionally, create a shortcut to populate the development databse with test data.
+1. Optionally, create a shortcut to populate the development database with test data.
 1. Apply all the changes to bring the version of the database up to date.
 1. Delete the applied scripts but keep the latest revision script.
 1. Edit the latest revision script and set the `down_revision` value to point back to where we originally started from.  In my example it should be the "`init_XXXX_version0`" where `xxx` is the module mnemonic.
