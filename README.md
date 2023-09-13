@@ -28,6 +28,64 @@ This is my specific uses case and may not fit your use situation.  However, if y
 4. Start your virtual environment using `pipenv shell`
 5. Continue to the "Deployment example" section.
 
+## Visual:
+The following is to help you see the created branches: 
+```mermaid
+---
+title: Alembic branching example
+---
+%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchName': 'Core'}} }%%
+gitGraph
+    checkout "Core"
+    commit id: "Core new table"
+    commit id: "Core func & proc"
+    commit id: "Core pop data"
+    commit id: "Core ver 0" type: HIGHLIGHT
+    branch "Initial All"
+    branch "Core Revision branch"
+    branch "Module 1 Long live branch"
+    checkout "Core Revision branch"
+    commit id: "Core rev1"
+    commit id: "Core rev2"
+    commit id: "Core rev3"
+    checkout "Core"
+    checkout "Module 1 Long live branch"
+    commit id: "Mod1 new table"
+    commit id: "Mod1 func & proc"
+    commit id: "Mod1 pop data"
+    commit id: "Mod1 ver 0" type: REVERSE
+    branch "Module 1 Revision branch"
+    commit id: "Mod1 rev1"
+    commit id: "Mod1 rev2"
+    commit id: "Mod1 rev3"
+    checkout "Core"
+    branch "Module 2 Long live branch"
+    checkout "Module 2 Long live branch"
+    commit id: "Mod2 new table"
+    commit id: "Mod2 func & proc"
+    commit id: "Mod2 pop data"
+    commit id: "Mod2 ver 0" type: REVERSE
+    branch "Module 2 Revision branch"
+    commit id: "Mod2 rev1"
+    commit id: "Mod2 rev2"
+    commit id: "Mod2 rev3"
+    checkout "Core"
+    branch "Module 3 Long live branch"
+    checkout "Module 3 Long live branch"
+    commit id: "Mod3 new table"
+    commit id: "Mod3 func & proc"
+    commit id: "Mod3 pop data"
+    commit id: "Mod3 ver 0" type: REVERSE
+    branch "Module 3 Revision branch"
+    commit id: "Mod3 rev1"
+    commit id: "Mod3 rev2"
+    commit id: "Mod3 rev3"
+    checkout "Initial All"
+    cherry-pick id: "Core ver 0"
+    cherry-pick id: "Mod1 ver 0"
+    cherry-pick id: "Mod2 ver 0"
+    cherry-pick id: "Mod3 ver 0"
+```
 
 ## Create the migration scripts using alembic:
 The sample scripts that are checked in was generated and edited from the following execution of "`alembic revision`" command maximizing its CLI options.
